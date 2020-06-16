@@ -9,15 +9,33 @@ ActiveRecord::Base.establish_connection(
 	    :username => "codio",
 	  # :password => "codio",
         :database => "bookratings")
-		
+
+# Book (books table in database)
+#
+# id : integer, primary key
+# title: string
+# author: string
+#
 class Book < ActiveRecord::Base
 
 end
 
+# User (users table in database)
+#
+# id : integer, primary key
+# name: string
+#
 class User < ActiveRecord::Base
 
 end
 
+# Rating (ratings table in database)
+#
+# user_id: integer, FK users.id
+# book_id: integer, FK books.id
+# rating: integer (-5 to +5)
+# primary key: user_id, book_id
+#
 class Rating < ActiveRecord::Base
    self.primary_keys = :user_id, :book_id
 
@@ -79,7 +97,5 @@ class Rating < ActiveRecord::Base
       end
       book2rating.map { |x| x ||= 0 }
    end
-
-
 
 end
