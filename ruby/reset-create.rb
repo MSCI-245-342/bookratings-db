@@ -20,7 +20,7 @@ ActiveRecord::Schema.define do
     t.string :name, null: false 
   end
 
-  create_table( :ratings, force: true ) do |t|
+  create_table( :ratings, primary_key: [:user_id, :book_id], force: true ) do |t|
     t.integer :rating, null: false 
     t.belongs_to :user, null: false, foreign_key: true 
     t.belongs_to :book, null: false, foreign_key: true

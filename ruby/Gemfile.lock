@@ -12,6 +12,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    composite_primary_keys (12.0.2)
+      activerecord (~> 6.0.0)
     concurrent-ruby (1.1.6)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
@@ -26,7 +28,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord
+  activerecord (~> 6.0.0)
+  composite_primary_keys (~> 12.0)
   pg
 
 RUBY VERSION

@@ -21,10 +21,6 @@ of the database.
 We can also create the database using ruby ActiveRecord, and this produces
 a version more compatible with using ActiveRecord.
 
-NOTE: You cannot use the SQL DDL to make a version for use
-with ActiveRecord.  ActiveRecord requires a unique, single 
-primary ID for each table.
-
 #### Creating the database in Postgresql with SQL
 
 From the terminal:
@@ -91,10 +87,10 @@ bookratings=# \d
  public | books                | table    | codio
  public | books_id_seq         | sequence | codio
  public | ratings              | table    | codio
- public | ratings_id_seq       | sequence | codio
  public | users                | table    | codio
  public | users_id_seq         | sequence | codio
-(7 rows)
+(6 rows)
+
 
 bookratings=# \d books
                                  Table "public.books"
@@ -120,18 +116,18 @@ Referenced by:
     TABLE "ratings" CONSTRAINT "fk_rails_a7dfeb9f5f" FOREIGN KEY (user_id) REFERENCES users(id)
 
 bookratings=# \d ratings
-                             Table "public.ratings"
- Column  |  Type   | Collation | Nullable |               Default
----------+---------+-----------+----------+-------------------------------------
- id      | bigint  |           | not null | nextval('ratings_id_seq'::regclass)
+               Table "public.ratings"
+ Column  |  Type   | Collation | Nullable | Default
+---------+---------+-----------+----------+---------
  rating  | integer |           | not null |
  user_id | bigint  |           | not null |
  book_id | bigint  |           | not null |
 Indexes:
-    "ratings_pkey" PRIMARY KEY, btree (id)
+    "ratings_pkey" PRIMARY KEY, btree (user_id, book_id)
     "index_ratings_on_book_id" btree (book_id)
     "index_ratings_on_user_id" btree (user_id)
 Foreign-key constraints:
     "fk_rails_99afded93e" FOREIGN KEY (book_id) REFERENCES books(id)
     "fk_rails_a7dfeb9f5f" FOREIGN KEY (user_id) REFERENCES users(id)
+
 ```
