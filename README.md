@@ -42,7 +42,7 @@ following to create tables and put data in them:
 
 ```
 cd sql
-psql -U codio -d bookratings
+psql -d bookratings
 ```
 and then from within psql:
 ```
@@ -59,11 +59,11 @@ is correct.
 
 Then, to drop existing tables and create them fresh:
 ```
-ruby reset-create.rb
+bundle exec ruby reset-create.rb
 ```
 Then to load data:
 ```
-ruby load-data.rb
+bundle exec ruby load-data.rb
 ```
 The `models.rb` file contains the ActiveRecord models.  
 
@@ -72,7 +72,7 @@ See `reset-create.rb` for the schema definition.
 We have already added user `codio` to the database, and so we can 
 use psql to invesitgate the DB: 
 ```
-psql -U codio -d bookratings
+psql -d bookratings
 ```
 Do `\d` to see the tables.  Do a `select *` on tables as appropriate 
 to verify data.
